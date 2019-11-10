@@ -1,0 +1,431 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+@import url(http://weloveiconfonts.com/api/?family=fontawesome|typicons);
+[class*="fontawesome-"]:before {
+  font-family: 'FontAwesome', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+body {
+    color:#fff;
+    background: #fff;
+    font-family: Arial;
+}
+
+.radio p{
+	color:black;
+	margin-left: 24px;
+	margin-top: 10px;
+}
+  /* Redes sociales */
+.info{
+    background-color: #942C14;
+    font-family: tahoma;
+    font-weight: bold;
+    color: white;
+    width: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.main{
+display: flex;
+justify-content: space-between;
+}
+
+#main{
+    height: 180px;
+}
+
+@media ( max-width: 900px) {
+    #main{
+        height: auto;
+    }
+    .col {
+        width: 100%;
+        float: none;
+        margin:0;
+        padding-left:0;
+    }
+}
+
+div#numero
+{
+	margin-top:30px;
+	text-align: left;
+	font-family:"Verdana";
+	font-size:20px;
+	font-weight:bold;
+	color: #fff;
+}
+
+.numero
+{
+	font-size: 20px;
+	margin-top:50px;
+	text-align: left;
+	font-family:"Verdana";
+	font-weight:bold;
+	color: #fff;
+	background-color:#5dd8a2;
+}
+
+div#redes{
+	text-align: right;
+	background-color: #942C14;
+    float: right;
+
+}
+
+.redes
+img{
+margin-top: 10px;
+    width:20%;
+    height: auto;
+    text-align: right;
+    margin-left: -2px;
+    transition: all 0.5s ease;
+    float: right;
+}
+
+.redes img:hover{
+transform: scale(0.9);
+}
+
+footer{
+     display: table;
+     justify-content : right;
+     align-items : right;
+     background-color: lightgrey;
+     width: 100%;
+     height : 0%;
+     padding-left: 20px;
+     color:gray;
+}
+ /* div entremedio del formulario */
+.hola {
+    max-width: 450px;
+    height: auto;
+    background-color: #EFEFEF;
+    margin: 5% auto;
+    padding-bottom: 1rem;
+    background-position: center;
+}
+/* primer div del formulario */
+.fuera{
+    background-color: #fff;
+}
+/* div del formulario - le da margenes de color al formulario*/
+.form__top {
+    width: 100%;
+    text-align: center;
+    padding: 2rem 0 1rem;
+    border-top: solid .4rem #942C14;
+    margin-bottom: 1rem;
+}
+ /* Se modifican los h2 dentro de form__top, */
+.form__top h2 {
+    font-weight: bold;
+    color: #942C14;
+    font-size: 18px;
+}
+
+ /* se modifica el formulario, en donde esta la zona de reguistro */
+.form__reg {
+    padding: 0.5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+ /*  modifica el boton 1*/
+.btn__form {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 15px;
+}
+ /* modifica el boton 2 */
+.input, .btn__submit, .btn__reset{
+    background-color: #EFEFEF;
+    padding: 7px;
+    margin: 20px;
+    border: none;
+    border-bottom: solid #942C14 ;
+    
+}
+  /* modifica todas las clases input */
+.input:focus {
+    border-bottom: solid #942C14 ;
+}
+  /* se modifican ambos botones para integrarles los detalles */
+.btn__submit, .btn__reset {
+    width: 40%;
+    border-bottom: none;
+    background-color: #942C14;
+    color: white;
+    transition: all 0.5s ease;
+     box-shadow: 0 5px 25px rgba(0,0,0.5);
+}
+
+.btn__reset {
+    background-color: #942C14;
+}
+  /*  cuando el mouse este por ensima (:hover) el boton cambia su color */
+.btn__submit:hover {
+    background-color: #15974e;
+    cursor:pointer;
+    transform: scale(0.9);
+}
+ /* lo mismo de arriba */
+.btn__reset:hover{
+    background-color: #15974e;
+    cursor:pointer;
+    transform: scale(0.9);
+}
+  /* modifica la clase combo box */
+.seleccion{
+            background-color:#942C14;
+            color:white;
+            font-size:15px;
+            width:80%;
+            height:35px;
+            margin-left: 10%;
+}
+  /* modifica los label del registro */ 
+.form__reg label{
+    color:black;
+    margin-left: 10%;
+    margin-top: 5%;
+}
+
+header {
+    width: 100%;
+    height: 50px;
+    background: #942C14;
+    color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+
+.contenedor {
+    width: 98%;
+    margin: auto;
+}
+
+h1 {
+    float: left;
+}
+
+header .contenedor {
+    display: table;
+}
+
+@media (min-width:1024px) {
+    .contenedor {
+        width: 1000px;
+    }
+}
+
+
+#banner {
+    margin-top: 50px;
+    background-color:#942C14; 
+}
+
+#banner img {
+     display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    width: 74%;
+}
+
+#banner .contenedor {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    color: #fff;
+}
+
+#banner h2 {
+    font-size: 28px;
+}
+
+#banner a {
+    display: block;
+    width: 100px;
+    color: #fff;
+    text-decoration: none;
+    padding: 7px;
+    margin-top: 10px;
+    border: 3px solid #fff;
+}
+
+#banner a:hover {
+    background: rgba(51,51,51,0.5);
+}
+
+@media (min-width:480px) {
+    #banner h2 {
+        font-size: 40px;
+    }
+    #banner a {
+        margin-top: 25px;
+    }
+}
+
+@media (min-width:768px) { 
+    #banner {
+        height: 300px;
+        overflow: hidden;
+    }
+    #banner img {
+        height: auto;
+        margin-top: auto;
+    }
+}
+
+@media (min-width:1024px) { 
+    #banner img {
+        margin-top: -15px;
+    }
+}
+
+#menu-bar {
+    display: none;
+}
+
+header label {
+    float: right;
+    font-size: 28px;
+    margin: 6px 0;
+    cursor: pointer;
+}
+
+.menu {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: #942C14;
+    transition: all 0.5s;
+    transform: translateX(-100%);
+}
+
+.menu a {
+    display: block;
+    color: #fff;
+    height: 50px;
+    text-decoration: none;
+    padding: 15px;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+}
+
+.menu a:hover {
+    background: rgba(255,255,255,0.3);
+}
+
+#menu-bar:checked ~ .menu {
+    transform: translateX(0%);
+}
+
+@media (min-width:1024px) {
+    .menu {
+        position: static;
+        width: auto;
+        height: auto;
+        transform: translateX(0%);
+        float: right;
+        display: flex;
+    }
+    .menu a {
+        border: none;
+    }
+    header label { 
+        display: none;
+    }
+}
+
+
+.slider{   height: 100%;
+    height: 250%;
+    margin:auto;
+    overflow: hidden;
+}
+
+.slider li{
+   
+    display: flex;
+     padding: 0;
+width: 100%;
+height: 100%;
+     animation: cambio 5s infinite;
+     animation-direction: alternate;
+     animation-timing-function: ease-in;
+}
+
+.slider li{
+    width: 100%;
+list-style: none;
+}
+
+.slider img{
+    
+    width: 100%;
+    height: 100%;
+}
+
+@keyframes cambio{
+    0%{ margin-left: 0;}
+    45%{margin-left: 0;}
+
+    50%{ margin-left: -100%;}
+    100%{ margin-left: -100%;}
+
+}
+#banner {
+    margin-top: 50px;
+    position: relative;
+}
+
+#banner img {
+    width: 100%;
+    height: 100%;
+}
+
+@media (min-width:480px) {
+    #banner h2 {
+        font-size: 40px;
+    }
+    
+    #banner a {
+        margin-top: 25px;
+    }
+}
+
+@media (min-width:768px) { 
+    #banner {
+        height: 300px;
+        overflow: hidden;
+    }
+    
+    #banner img {
+        height: auto;
+    }
+}
+
+@media (min-width:1024px) { 
+    #banner img {
+        margin-top: -200px;
+    }
+}

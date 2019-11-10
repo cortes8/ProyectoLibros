@@ -1,0 +1,129 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Creación de cuentas</title>
+    <link rel="shortcut icon" type="image/x-icon" href=" {% static 'img/iconolibros.png'  %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/estilosF.css' %}">
+    <script src="{% static 'js/form.js' %}"></script>
+</head>
+
+<body onload="cargarProvincias()">
+    
+<div class="contenedor">
+            <header>
+               <div class="contenedor">
+        <h1 class="icon-libros">Mis Libros</h1>
+        <input type="checkbox" id="menu-bar">
+        <label class="fontawesome-align-justify" for="menu-bar"></label>
+                  <nav class="menu">
+                    <a class="nav-link" href="{% url 'index' %}">Inicio</a>
+                    <a class="nav-link" href="{% url 'galeria' %}">Galeria</a>
+                    <a href="http://127.0.0.1:8000/admin/">admin</a>
+                    <a class="nav-link" href="{% url 'formulario' %}">contacto</a>
+                  </nav>
+                </div>
+            </header>
+</div>
+
+       
+<main>
+    <section id="banner">
+        <div class="slider">
+ <ul>
+<li>
+        <img src="{% static 'img/sliderlibros.jpg' %}" alt="">
+        <img src="{% static 'img/slider2.jpg' %}" alt="">
+
+</li>
+</ul>
+</div>
+
+        <div class="contenedor">
+            <h2>Libera tu imaginación</h2>
+            <p>La lectura abre mundos infinitos</p>
+        </div>
+    </section>
+    
+</main>
+        
+
+<div class="container">
+    <div class="col-xl-12"  style="background-color:#942C14">
+      <div class="info">
+            <p class="numero"></p>
+            <p class="numero"></p>
+                <div id="redes">
+                    <div class="redes"> 
+                    <a href="http://www.facebook.com" ><img src="{% static 'img/face.tiff' %}" width="50" height="50" alt=""> </a>
+                    <a href="http://www.instagram.com" > <img src="{% static 'img/ig.tiff '%}'" width="50" height="50" alt=""> </a>
+                    <a href="https://plus.google.com" ><img src="{% static 'img/plus.tiff' %}" width="50" height="50" alt=""> </a>
+                    <a href="http://www.twitter.com" >  <img src="{% static 'img/tiw.tiff' %}" width="50" height="50" alt=""> </a>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+<div class="fuera">
+  <div class="hola" >
+        <div class="form__top">
+            <h2>Creación de usuario</h2>
+        </div>      
+        <form name="formulario1" class="form__reg" >
+            <input class="input" type="email" placeholder="&#9993;  Email" required autofocus>
+            <input class="input" id="txtRut" type="text" minlength="9" maxlength="10" onkeyup="modifyText()" placeholder="Ingrese Rut" required />
+            <input class="input" type="text" pattern= "[A-Za-z]+" placeholder="&#128100;  Nombre" required>
+            <input class="input" type="text" pattern= "[A-Za-z]+" placeholder="&#128100;  Apellido" required>
+            <input class="input " type="number" name="num" placeholder="&#128222;  Telefono"  onkeypress="return validar(e)" required>
+            <label>Región:</label>
+            <select class="seleccion" name="cosa" onchange="cambia()" required="">
+                <option value="">Seleccione región</option>
+                <option value="1">Arica</option>
+                <option value="2">Iquique</option>
+                <option value="3">Antofagasta</option>
+                <option value="4">Copiapo</option>
+                <option value="5">La serena</option>
+                <option value="6">Valparaiso</option>
+                <option value="7">Metropolitana</option>
+            </select >
+            <label>Comuna:</label>
+            <select class="seleccion" name="opt" required>
+                    <option value="">Seleccione comuna</option>
+            </select>
+            <label>Tarjeta de crédito:</label>
+            <select class="seleccion" name="tipo" required>
+                     <option value="">Seleccione</option>
+                     <option value="1">BANCO DE CHILE</option>
+                     <option value="2">SCOTIABANK CHILE</option>
+                     <option value="3">BANCO BCI</option>
+                     <option value="4">BANCO SANTANDER</option>
+                     <option value="5">ITAÚ CORPBANCA</option>
+                </select>
+        <br> 
+        <br>
+        <br>
+        <br>
+        <br>
+            <div class="btn__form">
+                <input class="btn__submit" type="submit" value="REGISTRAR">
+                <input class="btn__reset" type="reset" value="LIMPIAR"> 
+            </div>
+        </form>
+    </div>
+</div>
+
+<footer class="row">
+            <div class="col-xs-12">
+                <div class="footer">
+                    <h3>  Todos los derechos reservados<br>
+                        Contacto: +56912353438<br>
+                        Email: Libros@gmail.com<br>
+                    </h3>
+                </div>
+            </div>
+</footer> 
+
+</body>
+</html>

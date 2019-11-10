@@ -1,0 +1,149 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>Mis Libros</title>
+	<link rel="shortcut icon" type="image/x-icon" href=" {% static 'img/iconolibros.png'  %}">
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+    <header>
+        <div class="contenedor">
+            <h1 class="icon-dog">Mis Libros</h1>
+            <input type="checkbox" id="menu-bar">
+            <label class="fontawesome-align-justify" for="menu-bar"></label>
+                    <nav class="menu">
+                        <a class="nav-link" href="{% url 'index' %}">Inicio</a>
+                        <a class="nav-link" href="{% url 'galeria' %}">Info libros</a>
+                        <a href="http://127.0.0.1:8000/admin/">admin</a>
+                        <a class="nav-link" href="{% url 'formulario' %}">contacto</a>
+                    </nav>
+                </div>
+    </header>
+
+
+<main>
+    <section id="banner">
+        <div class="slider">
+             <ul>
+                <li>
+                 <img src="{% static 'img/sliderlibros.jpg'%}" alt="">
+                 <img src="{% static 'img/slider2.jpg'%}" alt="">
+                    
+              </li>
+             </ul>
+</div>
+
+        <div class="contenedor">
+            <h2>Libera tu imaginación</h2>
+            <p>La lectura abre mundos infinitos</p>
+        </div>
+    </section>
+    
+</main>
+
+
+<div class="container">
+<div class="col-xl-12"  style="background-color:#942C14">
+<div class="info">
+    <p class="numero"></p>
+    <p class="numero"></p>
+        <div id="redes">
+            <div class="redes"> 
+                <a href="http://www.facebook.com" ><img src="{% static 'img/face.tiff' %}" width="50" height="50" alt=""> </a>
+                <a href="http://www.instagram.com" > <img src="{% static 'img/ig.tiff '%}'" width="50" height="50" alt=""> </a>
+                <a href="https://plus.google.com" ><img src="{% static 'img/plus.tiff' %}" width="50" height="50" alt=""> </a>
+                <a href="http://www.twitter.com" >  <img src="{% static 'img/tiw.tiff' %}" width="50" height="50" alt=""> </a>
+            </div>
+        </div>
+</div>
+</div>
+</div>
+
+ 
+<br>
+<br>
+
+
+ <!-- galeria -->
+ <div class="container-galeria">
+    
+     
+     <!-- imagenes -->
+     <div class="img-galeria">
+
+        <!-- Book list --> 
+        <h1>Lista de libros: </h1> <br>
+        
+
+    {% if galeria %}
+    <ul>
+
+      {% for book in galeria %}
+      <li>
+        <a href="{{ book.get_absolute_url }}">{{ book.titulo}}</a> ({{book.autor}}) 
+
+      </li>
+      {% endfor %}
+
+    </ul>
+
+    {% else %}
+      <br> <br><p class="je">No existen libros registrados</p>
+    {% endif %}       
+ <!--Termina el book list-->
+
+
+
+     </div>
+
+ </div>
+ 
+ <div class="container-galeria">
+
+
+<!-- detalles-->
+
+<figure> <h1></h1> <img src="{% static 'img/galeria/portada1.jpg'%}" width="170" height="325" alt=""> </figure>
+<br>
+<h2>Titulo: {{ book.titulo }}</h2>
+<br>
+<br> 
+  <p class="ja"><strong>Autor:</strong> <a href="">{{ book.autor }}</a></p> <!-- author detail link not yet defined --> <br>
+
+  <p class="ja"><strong>descripcion:</strong> {{ book.descripcion }}</p><br>
+  <p class="ja"><strong>Language:</strong> {{ book.language }}</p>  <br>
+  <p class="ja"><strong>Genero:</strong> {% for genero in book.genero.all %} {{ genero }}{% if not forloop.last %}, {% endif %}{% endfor %}</p> <br> 
+
+  <div style="margin-left:20px;margin-top:20px">
+    
+
+    {% for copy in book.Estado_libro.all %}
+    <hr>
+    <p class="{% if copy.status == 'a' %}text-success{% elif copy.status == 'm' %}text-danger{% else %}text-warning{% endif %}">{{ copy.get_status_display }}</p>
+    {% if copy.status != 'a' %}<p><strong>Due to be returned:</strong> {{copy.due_back}}</p>{% endif %}
+    <p><strong>Imprint:</strong> {{copy.imprint}}</p>
+    <p class="text-muted"><strong>Id:</strong> {{copy.id}}</p>
+    {% endfor %}
+  </div>
+
+  <!-- fin detalles-->
+
+ </div>
+
+<footer class="row">
+    <div class="col-xs-12">
+        <div class="footer">
+            <h3>  Todos los derechos reservados<br>
+                Contacto: +56912353438<br>
+                Email: Libros@gmail.com<br>
+            </h3>
+        </div>
+    </div>
+ </footer>  
+</body>
+</html>

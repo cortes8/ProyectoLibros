@@ -23,7 +23,8 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('libros/', include('libros.urls'))
-    #path(r'^catalogo/', include('catalogo.urls')),
+    
+    
 
 ]
 

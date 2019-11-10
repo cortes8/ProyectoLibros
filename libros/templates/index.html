@@ -1,27 +1,124 @@
-{% extends "base_generic.html" %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>Mis Libros</title>
+	<link rel="shortcut icon" type="image/x-icon" href="{% static 'img/iconolibros.png' %}">
+	<link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+</head>
+<body>
+    <header>
+        <div class="contenedor">
+            <h1 class="icon-libros">Mis Libros</h1>
+            <input type="checkbox" id="menu-bar">
+            <label class="fontawesome-align-justify" for="menu-bar"></label>
+                    <nav class="menu">
+                        <a class="nav-link" href="{% url 'index' %}">Inicio</a>
+                        <a class="nav-link" href="{% url 'galeria' %}">Galeria</a>
+                        <a href="http://127.0.0.1:8000/admin/">admin</a>
+                        <a class="nav-link" href="{% url 'formulario' %}">contacto</a>
+                    </nav>
+                </div>
+    </header>
+    <main>
+        <section id="banner">
+            <div class="slider">
+     <ul>
+    <li>
+            <img src="{% static 'img/sliderlibros.jpg' %}" alt="">
+            <img src="{% static 'img/slider2.jpg' %}" alt="">
 
-{% block content %}
-<h1>Local Library Home</h1>
+    </li>
+   </ul>
+    </div>
 
-  <p>Welcome to <em>LocalLibrary</em>, Django website </p>
+            <div class="contenedor">
+                <h2>Libera tu imaginación</h2>
+                <p>La lectura abre mundos infinitos</p>
+            </div>
+        </section>
+        
+    </main>
+    
 
 
-<h2>UML Models</h2>
-<p>An UML diagram of the site's Django model structure is shown below. </p>
 
-<div>
-{% load static %}
-<img src="{% static 'images/local_library_model_uml.png' %}" alt="My image" style="width:555px;height:540px;"/>
-</div>  
+    <div class="container">
+    <div class="col-xl-12"  style="background-color:#942C14">
+    <div class="info">
+        <p class="numero"></p>
+        <p class="numero"></p>
+            <div id="redes">
+                <div class="redes"> 
+                    <a href="http://www.facebook.com" ><img src="{% static 'img/face.tiff' %}" width="50" height="50" alt=""> </a>
+                    <a href="http://www.instagram.com" > <img src="{% static 'img/ig.tiff' %}" width="50" height="50" alt=""> </a>
+                    <a href="https://plus.google.com" ><img src="{% static 'img/plus.tiff' %}" width="50" height="50" alt=""> </a>
+                    <a href="http://www.twitter.com" >  <img src="{% static 'img/tiw.tiff' %}" width="50" height="50" alt="">> </a>
+                </div>
+            </div>
+    </div>
+    </div>
+    </div>
 
-<h2>Dynamic content</h2>
+    <section id="main">
+        <h3>Libroos</h3>
+        <article class="col">
+            <h4>LECTURA</h4>
+            <p id="etapa"> IMPORTANCIA </p> 
+        <div class="imgsep"><img src="{% static 'img/sep.png' %}" width="80" height="10" alt=""></div>
+            <p id="contenido">Mientras más leemos, </p>
+            <p id="contenido2">más aprendemos del mundo y sus maravillas. </p>
+            <p id="contenidos">Así mismo aumenta tus capacidades </p>
+            <p id="contenidos2">cognitivas y linguisticas.</p>
+        <div class="imgres"> <img src="{% static 'img/libre.jpg' %}" width="300" height="150" alt=""> </div>
+    </article>
 
-  <p>The library has the following record counts:</p>
-  <ul>
-    <li><strong>Books:</strong> {{ num_books }}</li>
-    <li><strong>Copies:</strong> {{ num_instances }}</li>
-    <li><strong>Copies available:</strong> {{ num_instances_available }}</li>
-    <li><strong>Authors:</strong> {{ num_authors }}</li>
-  </ul>
+    <aside class="col">
+        <div class="imgcam"> <img src="{% static 'img/crow.jpg' %}"  width="280" height="180" alt=""> </div>
+            <p id="titulo2"> NUEVOS MUNDOS </p>
+            <p id="etapa2"> LIBERA TU IMAGINACIÓN </p> 
+        <div class="imgsep"><img src="{% static 'img/sep.png' %}" width="80" height="10" alt=""></div>
+            <p id="contenido3">Gracias a los libros somos capaces  </p>
+            <p id="contenido4">de transportarnos en nuestra mente. </p>
+            <p id="contenidos3">Podemos acompañar a nuestros personajes </p>
+            <p id="contenidos4"> favoritos en su arduo camino.</p>
+    </aside>
 
+
+    {% block content %}
+  <h1>Title: {{ book.titulo }}</h1>
+
+  <p><strong>Autor:</strong> <a href="">{{ book.autor }}</a></p> <!-- author detail link not yet defined -->
+  <p><strong>descripcion:</strong> {{ book.descripcion }}</p>
+  <p><strong>Language:</strong> {{ book.language }}</p>  
+  <p><strong>Genero:</strong> {% for genero in book.genero.all %} {{ genero }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>  
+
+  <div style="margin-left:20px;margin-top:20px">
+    <h4>Copies</h4>
+
+    {% for copy in book.Estado_libro.all %}
+    <hr>
+    <p class="{% if copy.status == 'a' %}text-success{% elif copy.status == 'm' %}text-danger{% else %}text-warning{% endif %}">{{ copy.get_status_display }}</p>
+    {% if copy.status != 'a' %}<p><strong>Due to be returned:</strong> {{copy.due_back}}</p>{% endif %}
+    <p><strong>Imprint:</strong> {{copy.imprint}}</p>
+    <p class="text-muted"><strong>Id:</strong> {{copy.id}}</p>
+    {% endfor %}
+  </div>
 {% endblock %}
+    </section>
+
+    <footer class="row">
+        <div class="col-xs-12">       
+                  <div class="footer">
+              
+                    <h3>  Todos los derechos reservados<br>
+                        Contacto: +56912353438<br>
+                        Email: Libros@gmail.com<br>
+                    </h3>
+                </div>
+        </div>
+    </footer>   
+
+</body>
+</html>

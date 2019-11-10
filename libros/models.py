@@ -3,7 +3,7 @@ from django.urls import reverse # Used to generate URLs by reversing the URL pat
 import uuid # Required for unique book instances
 
 # Create your models here.
-class Genre(models.Model):
+class Genero(models.Model):
 #modelo representando genero del libro Al finalde la clase, 
 #hemos declarado el método __str__(), que simplemente devuelve el nombre de un
 #género definido por un registro en particular.
@@ -14,18 +14,15 @@ class Genre(models.Model):
         return self.name
 
 
-
 class Book(models.Model):
     
-	title = models.CharField(max_length=200)
-	author = models.ForeignKey('Author', on_delete=models.SET_NULL, null=True)
-    
-	summary = models.TextField(max_length=1000, help_text='Enter a brief description of the book')
-	isbn = models.CharField('ISBN', max_length=13, help_text='13 Character <a href="https://www.isbn-international.org/content/what-isbn">ISBN number</a>')
-	genre = models.ManyToManyField(Genre)
+	titulo = models.CharField(max_length=200)
+	autor = models.ForeignKey('Autor', on_delete=models.SET_NULL, null=True)
+	descripcion = models.TextField(max_length=1000, help_text='Pequeña descripcion del libro')
+	genero = models.ManyToManyField(Genero)
     
 	def __str__(self):
-		return self.title
+		return self.titulo
     
 	def get_absolute_url(self):
 		"""Returns the url to access a detail record for this book."""
@@ -35,36 +32,35 @@ class Book(models.Model):
 
 
 #copias del libro esta disponible o no, fecha para que sea devuelto, imprenta,id unico
-class BookInstance(models.Model):
+class Estado_libro(models.Model):
 #UUIDField es usado para establecer el campo id como una primary_key para este modelo. 
-	id = models.UUIDField(primary_key=True, default=uuid.uuid4, help_text='Unique ID for this particular book across whole library')
+	id = models.UUIDField(primary_key=True, default=uuid.uuid4, help_text='Identificación única para este libro en particular en toda la biblioteca')
 #DateField es usado para la fecha due_back  este valor puede ser blank o null   
-	book = models.ForeignKey('Book', on_delete=models.SET_NULL, null=True)
+	book = models.ForeignKey('book', on_delete=models.SET_NULL, null=True)
 	imprint = models.CharField(max_length=200)
 	due_back = models.DateField(null=True, blank=True)
 #status es un CharField que define una lista de elección/selección
 	LOAN_STATUS = (
-		('m', 'Maintenance'),
-		('o', 'On loan'),
-		('a', 'Available'),
-		('r', 'Reserved'),
+		('d', 'Disponible'),
+		('a', 'Agotado'),
+		
 	)
 
 	status = models.CharField(
 		max_length=1,
 		choices=LOAN_STATUS,
 		blank=True,
-		default='m',
-		help_text='Book availability',
+		default='d',
+		help_text='Estado de libro',
 	)
 
 	class Meta:
 		ordering = ['due_back']
-#El patrón __str__() representa el objeto BookInstance usando una combinación de su id
+#El patrón __str__() representa el objeto Estado de libro usando una combinación de su id
 #único y el título del Book asociado.
 	def __str__(self):
 		"""String for representing the Model object."""
-		return f'{self.id} ({self.book.title})'
+		return f'{self.id} ({self.book.titulo})'
 
 
 
@@ -73,6 +69,23 @@ class BookInstance(models.Model):
 #Especifica que de forma predeterminada el __str__() retorna el nombre en el orden
 #apellido, primer nombre. El método get_absolute_url() invierte el mapeo URL author-detail para
 #obtener el URL para mostrar un autor individual.
+class Autor(models.Model):
+	"""Model representing an author."""
+	primer_nombre = models.CharField(max_length=100)
+	apellido = models.CharField(max_length=100)
+	año_nacimiento = models.DateField(null=True, blank=True)
+	año_defuncion = models.DateField('defuncion', null=True, blank=True)
+
+	class Meta:
+		ordering = ['apellido', 'primer_nombre']
+
+	def get_absolute_url(self):
+		return reverse('autor-detail', args=[str(self.id)])
+
+	def __str__(self):
+		"""String for representing the Model object."""
+		return f'{self.apellido}, {self.primer_nombre}'
+
 class Author(models.Model):
 	"""Model representing an author."""
 	first_name = models.CharField(max_length=100)
