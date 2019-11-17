@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from .models import Book, Autor, Estado_libro, Genero
 from django.views import generic
-# Create your views here.
 def index(request):
     """
     Función vista para la página inicio del sitio.
@@ -32,7 +31,6 @@ def galeria(request):
 
 def formulario(request):
     return render(request,'formulario.html') 
-
 
 from django.views import generic
 

@@ -2,7 +2,6 @@ from django.db import models
 from django.urls import reverse # Used to generate URLs by reversing the URL patterns
 import uuid # Required for unique book instances
 
-# Create your models here.
 class Genero(models.Model):
 #modelo representando genero del libro Al finalde la clase, 
 #hemos declarado el método __str__(), que simplemente devuelve el nombre de un
@@ -26,7 +25,7 @@ class Book(models.Model):
     
 	def get_absolute_url(self):
 		"""Returns the url to access a detail record for this book."""
-		return reverse('book-detail', args=[str(self.id)])
+		return reverse('galeria', args=[str(self.id)])
 
 
 
@@ -85,20 +84,3 @@ class Autor(models.Model):
 	def __str__(self):
 		"""String for representing the Model object."""
 		return f'{self.apellido}, {self.primer_nombre}'
-
-class Author(models.Model):
-	"""Model representing an author."""
-	first_name = models.CharField(max_length=100)
-	last_name = models.CharField(max_length=100)
-	date_of_birth = models.DateField(null=True, blank=True)
-	date_of_death = models.DateField('Died', null=True, blank=True)
-
-	class Meta:
-		ordering = ['last_name', 'first_name']
-
-	def get_absolute_url(self):
-		return reverse('author-detail', args=[str(self.id)])
-
-	def __str__(self):
-		"""String for representing the Model object."""
-		return f'{self.last_name}, {self.first_name}'
