@@ -72,44 +72,16 @@
             <h2>Creación de usuario</h2>
         </div>      
         <form name="formulario1" class="form__reg" >
-            <input class="input" type="email" placeholder="&#9993;  Email" required autofocus>
-            <input class="input" id="txtRut" type="text" minlength="9" maxlength="10" onkeyup="modifyText()" placeholder="Ingrese Rut" required />
-            <input class="input" type="text" pattern= "[A-Za-z]+" placeholder="&#128100;  Nombre" required>
-            <input class="input" type="text" pattern= "[A-Za-z]+" placeholder="&#128100;  Apellido" required>
-            <input class="input " type="number" name="num" placeholder="&#128222;  Telefono"  onkeypress="return validar(e)" required>
-            <label>Región:</label>
-            <select class="seleccion" name="cosa" onchange="cambia()" required="">
-                <option value="">Seleccione región</option>
-                <option value="1">Arica</option>
-                <option value="2">Iquique</option>
-                <option value="3">Antofagasta</option>
-                <option value="4">Copiapo</option>
-                <option value="5">La serena</option>
-                <option value="6">Valparaiso</option>
-                <option value="7">Metropolitana</option>
-            </select >
-            <label>Comuna:</label>
-            <select class="seleccion" name="opt" required>
-                    <option value="">Seleccione comuna</option>
-            </select>
-            <label>Tarjeta de crédito:</label>
-            <select class="seleccion" name="tipo" required>
-                     <option value="">Seleccione</option>
-                     <option value="1">BANCO DE CHILE</option>
-                     <option value="2">SCOTIABANK CHILE</option>
-                     <option value="3">BANCO BCI</option>
-                     <option value="4">BANCO SANTANDER</option>
-                     <option value="5">ITAÚ CORPBANCA</option>
-                </select>
-        <br> 
-        <br>
-        <br>
-        <br>
-        <br>
-            <div class="btn__form">
-                <input class="btn__submit" type="submit" value="REGISTRAR">
-                <input class="btn__reset" type="reset" value="LIMPIAR"> 
-            </div>
+           
+                {% csrf_token %}
+                <table>
+                  <tr><th><label for="id_primer_nombre">Primer nombre:</label></th><td><input type="text" name="primer_nombre" maxlength="100" required id="id_primer_nombre"></td></tr>
+                  <tr><th><label for="id_apellido">Apellido:</label></th><td><input type="text" name="apellido" maxlength="100" required id="id_apellido"></td></tr>
+                  <tr><th><label for="id_año_nacimiento">Año nacimiento:</label></th><td><input type="text" name="año_nacimiento" id="id_año_nacimiento"></td></tr>
+                </table>
+                <input type="submit" value="Registrar" />
+                
+            </form>
         </form>
     </div>
 </div>

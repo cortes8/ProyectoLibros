@@ -19,18 +19,19 @@ def index(request):
         context={'num_libros':num_libros,'num_instancias':num_instancias,'num_libros_d':num_libros_d,'num_autors':num_autors},
     )
     
+def galeria(request):
+    return render(request,'galeria.html')  
 
+def formulario(request):
+    return render(request,'formulario.html') 
+    
 class BookListView(generic.ListView):
     model = Book
     paginate_by = 10
 class BookDetailView(generic.DetailView):
     model = Book
 
-def galeria(request):
-    return render(request,'galeria.html')  
 
-def formulario(request):
-    return render(request,'formulario.html') 
 
 from django.views import generic
 
@@ -48,11 +49,3 @@ class AutorCreate(CreateView):
     fields = '__all__'
     initial={'fecha_de_muerte':'05/01/2018',}
 
-class AutorUpdate(UpdateView):
-    model = Autor
-    fields = ['nombre','apellido','fecha_nacimiento','fecha_de_muerte']
-
-class AutorDelete(DeleteView):
-    model = Autor
-    success_url = reverse_lazy('autor')
- 

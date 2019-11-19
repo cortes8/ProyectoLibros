@@ -6,7 +6,7 @@ class AutorModelTest(TestCase):
 
     @classmethod
     def setUpTestData(cls):
-       Autor.objects.create(primer_nombre='Big', apellido='Bob')
+       Autor.objects.create(primer_nombre='carlos', apellido='cirtes')
 
     def test_primer_nombre_label(self):
         autor=Autor.objects.get(id=1)
