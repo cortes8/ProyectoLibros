@@ -15,5 +15,5 @@ Contraseña: matias1234
 
 
 Pythonanywhere
-http://ribot.pythonanywhere.com/libros
-http://ribot.pythonanywhere.com/admin/login/?next=/admin/
+http://riboot.pythonanywhere.com/libros
+http://riboot.pythonanywhere.com/admin/login/?next=/admin/
