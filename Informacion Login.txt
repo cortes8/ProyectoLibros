@@ -1,2 +1,19 @@
+Integrantes: Nicolas Cortes
+	     Matias Soto
+
+GitHub
+https://github.com/cortes8/ProyectoLibros
+
+
+Administrador
 Usuario: cortes 
 Contraseña: duoc.2019
+
+Normal
+Usuario: soto
+Contraseña: matias1234
+
+
+Pythonanywhere
+http://ribot.pythonanywhere.com/libros
+http://ribot.pythonanywhere.com/admin/login/?next=/admin/
