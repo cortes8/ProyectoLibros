@@ -22,11 +22,12 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('libros/', include('libros.urls'))
-    
+    path('', include('libros.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
     
 
 ]
 
 urlpatterns+= static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
+EMAIL_BACKEND	=	'django.core.mail.backends.console.EmailBackend'
